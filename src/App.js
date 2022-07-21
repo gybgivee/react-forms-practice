@@ -2,12 +2,39 @@ import { useState } from "react";
 import "./App.css";
 
 export default function App() {
-  
-  //TODO: Add your state fields here
+ const initialUser = {
+  name: "",
+  address: "",
+  phone: "",
+  email: "",
+  complaint: "",
+  contact: "",
+  consent: false
+}
+  const [userDetails, setUserDetails] = useState(initialUser);
+
+  const inputHandler = (e) => {
+    e.preventDefault();
+   const fields= e.target.elements;
+   const copyUserDetails =Object.assign({}, initialUser);
+  for(let i = 0; i <fields.length; i++) {
+    const inputName = fields[i].name;
+    const inputValue = fields[i].value;
+    copyUserDetails[inputName]=inputValue
+  }
+  setUserDetails(copyUserDetails);
+  console.log('userDetails',copyUserDetails);
+
+}
+console.log('userDetails',userDetails);
+
+const resetUserDetails = () => {
+  setUserDetails(initialUser);
+}
 
   return (
     <>
-      <form className="form">
+      <form className="form"  onSubmit={inputHandler}>
         <h2>Complaining form!</h2>
         <div className="form__section-left">
           <label>
