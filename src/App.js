@@ -23,10 +23,7 @@ export default function App() {
     copyUserDetails[inputName]=inputValue
   }
   setUserDetails(copyUserDetails);
-  console.log('userDetails',copyUserDetails);
-
 }
-console.log('userDetails',userDetails);
 
 const resetUserDetails = () => {
   setUserDetails(initialUser);
